@@ -119,7 +119,22 @@
           <mxGeometry x="300" y="340" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-36" value="&lt;b&gt;&lt;u&gt;ID_Reservasi&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
-          <mxGeometry x="550" y="-100" width="120" height="80" as="geometry" />
+          <mxGeometry x="560" y="-130" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-37" value="ID_Tamu" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="490" y="-30" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-38" value="ID_Kamar" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="490" y="70" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-39" value="Tanggal_Checkin" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="520" y="170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-40" value="Tanggal_Checkout" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="550" y="260" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-41" value="Status_Reservasi" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="620" y="340" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
