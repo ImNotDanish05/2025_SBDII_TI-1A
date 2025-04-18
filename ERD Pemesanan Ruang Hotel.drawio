@@ -157,8 +157,8 @@
         <mxCell id="p-pOgN2rcpTyZTC6pipD-14" value="Payment" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
           <mxGeometry x="170" y="580" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-15" value="Layanan Tambahan" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
-          <mxGeometry x="710" y="470" width="120" height="60" as="geometry" />
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-15" value="Layanan_Tambahan" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="830" y="580" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-16" value="Nama" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
           <mxGeometry x="-200" width="120" height="80" as="geometry" />
@@ -225,6 +225,9 @@
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-53" value="Status_Pembayaran" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
           <mxGeometry x="50" y="850" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-60" value="Pegawai" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="500" y="580" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
