@@ -302,7 +302,10 @@
           <mxGeometry x="800" y="690" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-79" value="Deskripsi" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
-          <mxGeometry x="900" y="800" width="120" height="80" as="geometry" />
+          <mxGeometry x="880" y="790" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-80" value="Gambar" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
+          <mxGeometry x="960" y="880" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
