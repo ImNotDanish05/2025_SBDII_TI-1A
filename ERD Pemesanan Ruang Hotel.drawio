@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.13">
   <diagram name="Page-1" id="5b6cXbMIFhht2GzxUnYm">
-    <mxGraphModel dx="1579" dy="1542" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1453" dy="1465" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -368,7 +368,7 @@
           <mxGeometry x="1540" y="630" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="e2a9GpqA6ZSLNUHN16Bm-9" value="ID_Tamu" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
-          <mxGeometry x="-300" width="80" height="80" as="geometry" />
+          <mxGeometry x="-300" y="-10" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
