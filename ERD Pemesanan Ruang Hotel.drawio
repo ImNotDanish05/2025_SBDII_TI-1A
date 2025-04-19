@@ -4,6 +4,12 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="e2a9GpqA6ZSLNUHN16Bm-6" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="p-pOgN2rcpTyZTC6pipD-15" target="e2a9GpqA6ZSLNUHN16Bm-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1550" y="790" as="sourcePoint" />
+            <mxPoint x="1600" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="e2a9GpqA6ZSLNUHN16Bm-2" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="p-pOgN2rcpTyZTC6pipD-13" target="e2a9GpqA6ZSLNUHN16Bm-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="850" y="90" as="sourcePoint" />
@@ -332,19 +338,22 @@
           <mxGeometry x="1590" y="540" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-77" value="Nama_Layanan" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="1530" y="650" width="120" height="80" as="geometry" />
+          <mxGeometry x="1530" y="720" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-78" value="Harga" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="1570" y="750" width="120" height="80" as="geometry" />
+          <mxGeometry x="1570" y="820" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-79" value="Deskripsi" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="1650" y="850" width="120" height="80" as="geometry" />
+          <mxGeometry x="1650" y="920" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-80" value="Gambar" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="1730" y="940" width="120" height="80" as="geometry" />
+          <mxGeometry x="1730" y="1010" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="e2a9GpqA6ZSLNUHN16Bm-1" value="ID_Pegawai" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="840" y="-90" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e2a9GpqA6ZSLNUHN16Bm-5" value="ID_Pegawai" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="630" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
