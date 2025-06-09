@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
   <diagram name="Page-1" id="5b6cXbMIFhht2GzxUnYm">
-    <mxGraphModel dx="2687" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3082" dy="1940" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -316,7 +316,7 @@
         <mxCell id="p-pOgN2rcpTyZTC6pipD-8" value="&lt;b&gt;&lt;u&gt;guest_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="810" y="170" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-12" value="Ruang" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-12" value="Rooms" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
           <mxGeometry x="660" y="-275" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-13" value="Booking" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="1" vertex="1">
@@ -340,19 +340,19 @@
         <mxCell id="p-pOgN2rcpTyZTC6pipD-19" value="address" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="790" y="540" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-24" value="&lt;b&gt;&lt;u&gt;ID_Kamar&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-24" value="&lt;b&gt;&lt;u&gt;room_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="720" y="-455" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-25" value="Tipe_Kamar" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-25" value="room_type" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="860" y="-405" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-26" value="Harga" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-26" value="price" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="940" y="-325" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-27" value="Status_Sedia" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-27" value="availability" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="940" y="-235" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-29" value="Gambar" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-29" value="image" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="760" y="-65" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-36" value="&lt;b&gt;&lt;u&gt;ID_Reservasi&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#fa6800;strokeColor=#C73500;fontColor=#000000;" parent="1" vertex="1">
@@ -433,10 +433,10 @@
         <mxCell id="e2a9GpqA6ZSLNUHN16Bm-5" value="ID_Pegawai" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-890" y="530" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="e2a9GpqA6ZSLNUHN16Bm-9" value="ID_Tamu" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;points=[[0.5,0.5,0,0,0]];" parent="1" vertex="1">
+        <mxCell id="e2a9GpqA6ZSLNUHN16Bm-9" value="guest_id" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;points=[[0.5,0.5,0,0,0]];" parent="1" vertex="1">
           <mxGeometry x="420" y="140" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-28" value="Jumlah_Bed" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-28" value="bed_count" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
           <mxGeometry x="860" y="-145" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="e2a9GpqA6ZSLNUHN16Bm-18" value="ID_Kamar" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;points=[[0.5,0.5,0,0,0]];" parent="1" vertex="1">
