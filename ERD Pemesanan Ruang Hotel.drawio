@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
   <diagram name="Page-1" id="5b6cXbMIFhht2GzxUnYm">
-    <mxGraphModel dx="2852" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2687" dy="1700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -310,10 +310,10 @@
             <mxPoint x="-530" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-4" value="Tamu" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-4" value="Guests" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" parent="1" vertex="1">
           <mxGeometry x="650" y="290" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-8" value="&lt;b&gt;&lt;u&gt;ID_Tamu&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-8" value="&lt;b&gt;&lt;u&gt;guest_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="810" y="170" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-12" value="Ruang" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
@@ -328,16 +328,16 @@
         <mxCell id="p-pOgN2rcpTyZTC6pipD-15" value="Layanan_Tambahan" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-520" y="580" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-16" value="Nama" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-16" value="name" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="890" y="270" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-17" value="Email" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-17" value="email" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="990" y="370" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-18" value="Nomor_HP" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-18" value="phone_number" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="920" y="460" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-19" value="Alamat" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-19" value="address" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="1" vertex="1">
           <mxGeometry x="790" y="540" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-24" value="&lt;b&gt;&lt;u&gt;ID_Kamar&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
@@ -383,7 +383,7 @@
           <mxGeometry x="-770" y="190" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-51" value="Metode_Pembayaran" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
-          <mxGeometry x="-550" y="220" width="120" height="80" as="geometry" />
+          <mxGeometry x="-580" y="220" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-52" value="Tanggal_Pembayaran" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="-410" y="170" width="120" height="80" as="geometry" />
