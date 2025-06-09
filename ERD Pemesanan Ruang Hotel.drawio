@@ -517,7 +517,7 @@
         <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-36" value="payment_method_id" style="rhombus;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;points=[[0.5,0.5,0,0,0]];" vertex="1" parent="1">
           <mxGeometry x="-637.5" y="-272.5" width="155" height="155" as="geometry" />
         </mxCell>
-        <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-39" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-39" value="N" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="-620" y="-30" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-40" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
