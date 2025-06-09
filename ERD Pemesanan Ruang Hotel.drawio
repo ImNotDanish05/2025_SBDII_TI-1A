@@ -526,7 +526,7 @@
             <mxPoint x="-120" y="-392" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-28" value="Booking" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+        <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-28" value="PaymentMethods" style="rounded=0;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
           <mxGeometry x="-620" y="-412" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="dPMQ-WFFV9zRJ2E0VN6Y-29" value="&lt;b&gt;&lt;u&gt;ID_Reservasi&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
