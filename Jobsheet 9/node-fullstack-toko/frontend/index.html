@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Barang</title>
+</head>
+<body>
+    <h1>Manajemen Barang - ImNotDanish05</h1>
+    <form id="barangForm">
+        <input type="text" id="nama" placeholder="Nama Barang" required>
+        <input type="number" id="harga_beli" placeholder="Harga Beli" required>
+        <input type="number" id="harga_jual" placeholder="Harga Jual" required>
+        <input type="text" id="jenis_barang" placeholder="Jenis Barang" required>
+        <input type="number" id="stok" placeholder="Stok Barang" required>
+        <input type="text" id="deskripsi" placeholder="Deskripsi Barang" required>
+        <button type="submit">Tambah Barang</button>
+    </form>
+    <ul id="barangList"></ul>
+    <script>
+        const apiURL = 'http://localhost:3000/api/barang';
+        async function loadBarang() {
+            const res = await fetch(apiURL);
+            const data = await res.json();
+            const list = document.getElementById('barangList');
+            list.innerHTML = '';
+            data.forEach(barang => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${barang.nama} - ${barang.harga_beli} - ${barang.harga_jual} - ${barang.jenis_barang} - ${barang.stok} - ${barang.deskripsi}
+                    <button onclick="hapusBarang('${barang._id}')">Hapus</button>
+                    <button onclick='editBarang("${barang._id}", 
+                        "${barang.nama}", 
+                        "${barang.harga_beli}", 
+                        "${barang.harga_jual}", 
+                        "${barang.jenis_barang}", 
+                        "${barang.stok}", 
+                        "${barang.deskripsi}")'>Edit</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+        async function tambahBarang(e){
+            e.preventDefault();
+            const nama = document.getElementById('nama').value;
+            const harga_beli = document.getElementById('harga_beli').value;
+            const harga_jual = document.getElementById('harga_jual').value;
+            const jenis_barang = document.getElementById('jenis_barang').value;
+            const stok = document.getElementById('stok').value;
+            const deskripsi = document.getElementById('deskripsi').value;
+
+            await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nama,
+                    harga_beli,
+                    harga_jual,
+                    jenis_barang,
+                    stok,
+                    deskripsi
+                })
+            });
+            document.getElementById('barangForm').reset();
+            loadBarang();
+        }
+
+        async function hapusBarang(id) {
+            await fetch(`${apiURL}/${id}`, {
+                method: 'DELETE'
+            });
+            loadBarang();
+        }
+
+        function editBarang(id, nama, harga_beli, harga_jual, jenis_barang, stok, deskripsi) {
+            document.getElementById('nama').value = nama;
+            document.getElementById('harga_beli').value = harga_beli;
+            document.getElementById('harga_jual').value = harga_jual;
+            document.getElementById('jenis_barang').value = jenis_barang;
+            document.getElementById('stok').value = stok;
+            document.getElementById('deskripsi').value = deskripsi;
+
+            const form = document.getElementById('barangForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURL}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nama: document.getElementById('nama').value,
+                        harga_beli: document.getElementById('harga_beli').value,
+                        harga_jual: document.getElementById('harga_jual').value,
+                        jenis_barang: document.getElementById('jenis_barang').value,
+                        stok: document.getElementById('stok').value,
+                        deskripsi: document.getElementById('deskripsi').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahBarang;
+                loadBarang();
+                
+            };
+        }
+        document.getElementById('barangForm').onsubmit = tambahBarang;
+        loadBarang();
+    </script>
+</body>
+</html>

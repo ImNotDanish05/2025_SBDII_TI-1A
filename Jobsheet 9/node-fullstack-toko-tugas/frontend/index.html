@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Barang</title>
+</head>
+<body>
+    <h1>ImNotDanish05</h1>
+    <h2>Manajemen Barang</h2>
+    <h3>CRUD Barang</h3>
+    <div>
+        <form id="barangForm">
+            <input type="text" id="barang_nama" placeholder="Nama Barang" required>
+            <input type="number" id="barang_harga_beli" placeholder="Harga Beli" required>
+            <input type="number" id="barang_harga_jual" placeholder="Harga Jual" required>
+            <input type="text" id="barang_jenis" placeholder="Jenis Barang" required>
+            <input type="number" id="barang_stok" placeholder="Stok Barang" required>
+            <input type="text" id="barang_deskripsi" placeholder="Deskripsi Barang" required>
+            <button type="submit">Tambah Barang</button>
+        </form>
+        <ul id="barangList"></ul>
+    </div>
+    <h2>Manajemen Pembelian</h2>
+    <h3>CRUD Pembelian</h3>
+    <div>
+        <form id="pembelianForm">
+            <input type="text" id="pembelian_nama" placeholder="Nama Pembelian" required>
+            <input type="number" id="pembelian_jumlah" placeholder="Jumlah" required>
+            <input type="text" id="pembelian_supplier" placeholder="Supplier" required>
+            <input type="date" id="pembelian_tanggal" placeholder="Tanggal Pembelian" required>
+            <button type="submit">Tambah Pembelian</button>
+        </form>
+        <ul id="pembelianList"></ul>
+    </div>
+    <h2>Manajemen Penjualan</h2>
+    <h3>CRUD Penjualan</h3>
+    <div>
+        <form id="penjualanForm">
+            <input type="text" id="penjualan_nama" placeholder="Nama Penjualan" required>
+            <input type="number" id="penjualan_jumlah" placeholder="Jumlah" required>
+            <input type="date" id="penjualan_tanggal" placeholder="Tanggal Pembelian" required>
+            <button type="submit">Tambah Penjualan</button>
+        </form>
+        <ul id="penjualanList"></ul>
+    </div>
+    <h2>Manajemen Supplier</h2>
+    <h3>CRUD Supplier</h3>
+    <div>
+        <form id="supplierForm">
+            <input type="text" id="supplier_nama" placeholder="Nama Supplier" required>
+            <input type="text" id="supplier_nama_supplier" placeholder="Nama Supplier" required>
+            <input type="text" id="supplier_alamat" placeholder="Alamat" required>
+            <input type="text" id="supplier_kode_pos" placeholder="Kode Pos" required>
+            <input type="date" id="supplier_tanggal_pembelian" placeholder="Tanggal Pembelian" required>
+            <button type="submit">Tambah Supplier</button>
+        </form>
+        <ul id="supplierList"></ul>
+    </div>
+
+
+
+    
+    <script>
+        // barang, pembelian, penjualan, supplier
+        // ===== URL API =====
+        const apiURLbarang = 'http://localhost:3000/api/barang';
+        const apiURLpembelian = 'http://localhost:3000/api/pembelian';
+        const apiURLpenjualan = 'http://localhost:3000/api/penjualan';
+        const apiURLsupplier = 'http://localhost:3000/api/supplier';
+
+        // ======== BARANG =========
+        async function loadBarang() {
+            const res = await fetch(apiURLbarang);
+            const data = await res.json();
+            const list = document.getElementById('barangList');
+            list.innerHTML = '';
+            data.forEach(barang => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${barang.nama} - ${barang.harga_beli} - ${barang.harga_jual} - ${barang.jenis_barang} - ${barang.stok} - ${barang.deskripsi}
+                    <button onclick="hapusBarang('${barang._id}')">Hapus</button>
+                    <button onclick='editBarang("${barang._id}", 
+                        "${barang.nama}", 
+                        "${barang.harga_beli}", 
+                        "${barang.harga_jual}", 
+                        "${barang.jenis_barang}", 
+                        "${barang.stok}", 
+                        "${barang.deskripsi}")'>Edit</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+        async function tambahBarang(e){
+            e.preventDefault();
+            const nama = document.getElementById('barang_nama').value;
+            const harga_beli = document.getElementById('barang_harga_beli').value;
+            const harga_jual = document.getElementById('barang_harga_jual').value;
+            const jenis_barang = document.getElementById('barang_jenis').value;
+            const stok = document.getElementById('barang_stok').value;
+            const deskripsi = document.getElementById('barang_deskripsi').value;
+
+            await fetch(apiURLbarang, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nama,
+                    harga_beli,
+                    harga_jual,
+                    jenis_barang,
+                    stok,
+                    deskripsi
+                })
+            });
+            document.getElementById('barangForm').reset();
+            loadBarang();
+        }
+
+        async function hapusBarang(id) {
+            await fetch(`${apiURLbarang}/${id}`, {
+                method: 'DELETE'
+            });
+            loadBarang();
+        }
+
+        function editBarang(id, nama, harga_beli, harga_jual, jenis_barang, stok, deskripsi) {
+            document.getElementById('barang_nama').value = nama;
+            document.getElementById('barang_harga_beli').value = harga_beli;
+            document.getElementById('barang_harga_jual').value = harga_jual;
+            document.getElementById('barang_jenis').value = jenis_barang;
+            document.getElementById('barang_stok').value = stok;
+            document.getElementById('barang_deskripsi').value = deskripsi;
+
+            // Ganti fungsi onsubmit form untuk mengupdate barang
+            const form = document.getElementById('barangForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURLbarang}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nama: document.getElementById('barang_nama').value,
+                        harga_beli: document.getElementById('barang_harga_beli').value,
+                        harga_jual: document.getElementById('barang_harga_jual').value,
+                        jenis_barang: document.getElementById('barang_jenis').value,
+                        stok: document.getElementById('barang_stok').value,
+                        deskripsi: document.getElementById('barang_deskripsi').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahBarang;
+                loadBarang();
+                
+            };
+        }
+
+        // ===== PEMBELIAN =====
+        async function loadPembelian() {
+            const res = await fetch(apiURLpembelian);
+            const data = await res.json();
+            const list = document.getElementById('pembelianList');
+            list.innerHTML = '';
+            data.forEach(pembelian => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${pembelian.nama} - ${pembelian.jumlah} - ${pembelian.supplier} - ${pembelian.tanggal_pembelian}
+                    <button onclick="hapusPembelian('${pembelian._id}')">Hapus</button>
+                    <button onclick='editPembelian("${pembelian._id}", "${pembelian.nama}", "${pembelian.jumlah}", "${pembelian.supplier}", "${pembelian.tanggal_pembelian}")'>Edit</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahPembelian(e) {
+            e.preventDefault();
+            const nama = document.getElementById('pembelian_nama').value;
+            const jumlah = document.getElementById('pembelian_jumlah').value;
+            const supplier = document.getElementById('pembelian_supplier').value;
+            const tanggal_pembelian = document.getElementById('pembelian_tanggal').value;
+
+            await fetch(apiURLpembelian, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nama, jumlah, supplier, tanggal_pembelian })
+            });
+
+            document.getElementById('pembelianForm').reset();
+            loadPembelian();
+        }
+
+        async function hapusPembelian(id) {
+            await fetch(`${apiURLpembelian}/${id}`, { method: 'DELETE' });
+            loadPembelian();
+        }
+
+        function editPembelian(id, nama, jumlah, supplier, tanggal_pembelian) {
+            document.getElementById('pembelian_nama').value = nama;
+            document.getElementById('pembelian_jumlah').value = jumlah;
+            document.getElementById('pembelian_supplier').value = supplier;
+            document.getElementById('pembelian_tanggal').value = tanggal_pembelian;
+
+            const form = document.getElementById('pembelianForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURLpembelian}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nama: document.getElementById('pembelian_nama').value,
+                        jumlah: document.getElementById('pembelian_jumlah').value,
+                        supplier: document.getElementById('pembelian_supplier').value,
+                        tanggal_pembelian: document.getElementById('pembelian_tanggal').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahPembelian;
+                loadPembelian();
+            };
+        }
+
+        // ===== PENJUALAN =====
+        async function loadPenjualan() {
+            const res = await fetch(apiURLpenjualan);
+            const data = await res.json();
+            const list = document.getElementById('penjualanList');
+            list.innerHTML = '';
+            data.forEach(penjualan => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${penjualan.nama} - ${penjualan.jumlah} - ${penjualan.tanggal_pembelian}
+                    <button onclick="hapusPenjualan('${penjualan._id}')">Hapus</button>
+                    <button onclick='editPenjualan("${penjualan._id}", "${penjualan.nama}", "${penjualan.jumlah}", "${penjualan.tanggal_pembelian}")'>Edit</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahPenjualan(e) {
+            e.preventDefault();
+            const nama = document.getElementById('penjualan_nama').value;
+            const jumlah = document.getElementById('penjualan_jumlah').value;
+            const tanggal_pembelian = document.getElementById('penjualan_tanggal').value;
+
+            await fetch(apiURLpenjualan, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nama, jumlah, tanggal_pembelian })
+            });
+
+            document.getElementById('penjualanForm').reset();
+            loadPenjualan();
+        }
+
+        async function hapusPenjualan(id) {
+            await fetch(`${apiURLpenjualan}/${id}`, { method: 'DELETE' });
+            loadPenjualan();
+        }
+
+        function editPenjualan(id, nama, jumlah, tanggal_pembelian) {
+            document.getElementById('penjualan_nama').value = nama;
+            document.getElementById('penjualan_jumlah').value = jumlah;
+            document.getElementById('penjualan_tanggal').value = tanggal_pembelian;
+
+            const form = document.getElementById('penjualanForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURLpenjualan}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nama: document.getElementById('penjualan_nama').value,
+                        jumlah: document.getElementById('penjualan_jumlah').value,
+                        tanggal_pembelian: document.getElementById('penjualan_tanggal').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahPenjualan;
+                loadPenjualan();
+            };
+        }
+
+        // ===== SUPPLIER =====
+        async function loadSupplier() {
+            const res = await fetch(apiURLsupplier);
+            const data = await res.json();
+            const list = document.getElementById('supplierList');
+            list.innerHTML = '';
+            data.forEach(supplier => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${supplier.nama} - ${supplier.nama_supplier} - ${supplier.alamat} - ${supplier.kode_pos} - ${supplier.tanggal_pembelian}
+                    <button onclick="hapusSupplier('${supplier._id}')">Hapus</button>
+                    <button onclick='editSupplier("${supplier._id}", "${supplier.nama}", "${supplier.nama_supplier}", "${supplier.alamat}", "${supplier.kode_pos}", "${supplier.tanggal_pembelian}")'>Edit</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahSupplier(e) {
+            e.preventDefault();
+            const nama = document.getElementById('supplier_nama').value;
+            const nama_supplier = document.getElementById('supplier_nama_supplier').value;
+            const alamat = document.getElementById('supplier_alamat').value;
+            const kode_pos = document.getElementById('supplier_kode_pos').value;
+            const tanggal_pembelian = document.getElementById('supplier_tanggal_pembelian').value;
+
+            await fetch(apiURLsupplier, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nama, nama_supplier, alamat, kode_pos, tanggal_pembelian })
+            });
+
+            document.getElementById('supplierForm').reset();
+            loadSupplier();
+        }
+
+        async function hapusSupplier(id) {
+            await fetch(`${apiURLsupplier}/${id}`, { method: 'DELETE' });
+            loadSupplier();
+        }
+
+        function editSupplier(id, nama, nama_supplier, alamat, kode_pos, tanggal_pembelian) {
+            document.getElementById('supplier_nama').value = nama;
+            document.getElementById('supplier_nama_supplier').value = nama_supplier;
+            document.getElementById('supplier_alamat').value = alamat;
+            document.getElementById('supplier_kode_pos').value = kode_pos;
+            document.getElementById('supplier_tanggal_pembelian').value = tanggal_pembelian;
+            const form = document.getElementById('supplierForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURLsupplier}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nama: document.getElementById('supplier_nama').value,
+                        nama_supplier: document.getElementById('supplier_nama_supplier').value,
+                        alamat: document.getElementById('supplier_alamat').value,
+                        kode_pos: document.getElementById('supplier_kode_pos').value,
+                        tanggal_pembelian: document.getElementById('supplier_tanggal_pembelian').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahSupplier;
+                loadSupplier();
+            };
+        }
+
+        // Setiap fungsi tambahBarang dipanggil, reset form dan set ulang onsubmit
+        document.getElementById('barangForm').onsubmit = tambahBarang;
+        loadBarang();
+        document.getElementById('pembelianForm').onsubmit = tambahPembelian;
+        loadPembelian();
+        document.getElementById('penjualanForm').onsubmit = tambahPenjualan;
+        loadPenjualan();
+        document.getElementById('supplierForm').onsubmit = tambahSupplier;
+        loadSupplier();
+    </script>
+</body>
+</html>
