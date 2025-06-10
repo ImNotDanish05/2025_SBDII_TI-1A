@@ -47,4 +47,6 @@ Repository ini berisi catatan, tugas, dan proyek dari mata kuliah **Sistem Basis
 ---
 
 > *Dokumentasi ini ditujukan untuk keperluan akademik, berbagi ilmu, dan memperkuat pemahaman pribadi tentang database tingkat lanjut.*
-> *Untuk file seperti "node_modules" sepenuhnya BUKAN buatan saya. Saya mengiirim package itu supaya tidak error kedepannya*
+
+> ⚠️ NOTE: Folder `node_modules/` disertakan untuk keperluan build otomatis dan testing internal. 
+Saya tidak membuat package apapun di dalam folder ini.
