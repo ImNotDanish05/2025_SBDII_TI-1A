@@ -418,7 +418,7 @@
         <mxCell id="p-pOgN2rcpTyZTC6pipD-68" value="address" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="90" y="840" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="p-pOgN2rcpTyZTC6pipD-76" value="&lt;b&gt;&lt;u&gt;service_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="p-pOgN2rcpTyZTC6pipD-76" value="&lt;b&gt;&lt;u&gt;extra_service_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-1490" y="640" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p-pOgN2rcpTyZTC6pipD-77" value="service_name" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#d5e8d4;gradientColor=#97d077;strokeColor=#82b366;" parent="1" vertex="1">
@@ -539,9 +539,9 @@
           <mxGeometry x="-1360" y="-440" width="180" height="100" as="geometry" />
         </mxCell>
         <mxCell id="Q0ANnaZcU4Pe7rScrqPG-6" value="&lt;b&gt;&lt;u&gt;payment_id&lt;/u&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="-1530" y="-485" width="120" height="80" as="geometry" />
+          <mxGeometry x="-1540" y="-520" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Q0ANnaZcU4Pe7rScrqPG-7" value="booking_id" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+        <mxCell id="Q0ANnaZcU4Pe7rScrqPG-7" value="extra_service_id" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
           <mxGeometry x="-1650" y="-390" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="Q0ANnaZcU4Pe7rScrqPG-8" value="payment_method_id" style="ellipse;whiteSpace=wrap;html=1;points=[[0.5,0.5,0,0,0]];fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
