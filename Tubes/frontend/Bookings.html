@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manajemen Bookings - Hotel System</title>
+</head>
+<body>
+  <h1>Manajemen Bookings - ImNotDanish05</h1>
+  <form id="bookingForm">
+    <input type="number" id="booking_id" placeholder="Booking ID" required>
+    <input type="number" id="guest_id" placeholder="Guest ID" required>
+    <input type="number" id="room_id" placeholder="Room ID" required>
+    <input type="number" id="employee_id" placeholder="Employee ID" required>
+    <input type="date" id="check_in_date" required>
+    <input type="date" id="check_out_date" required>
+    <input type="number" id="booking_status" placeholder="Booking Status" required>
+    <button type="submit">Tambah Booking</button>
+  </form>
+
+  <ul id="bookingList"></ul>
+
+  <script>
+    const apiURL = 'http://localhost:3000/api/bookings';
+
+    async function loadBookings() {
+      const res = await fetch(apiURL);
+      const data = await res.json();
+      const list = document.getElementById('bookingList');
+      list.innerHTML = '';
+      data.forEach(b => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ID:${b.booking_id} | Guest:${b.guest_id} | Room:${b.room_id} | Employee:${b.employee_id}<br>
+          Check-In: ${new Date(b.check_in_date).toLocaleDateString()} - Check-Out: ${new Date(b.check_out_date).toLocaleDateString()}<br>
+          Status: ${b.booking_status}
+          <br>
+          <button onclick="hapusBooking('${b._id}')">Hapus</button>
+          <button onclick='editBooking("${b._id}", ${JSON.stringify(b)})'>Edit</button>
+          <hr>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    async function tambahBooking(e) {
+      e.preventDefault();
+      const data = ambilDataForm();
+
+      await fetch(apiURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      document.getElementById('bookingForm').reset();
+      loadBookings();
+    }
+
+    async function hapusBooking(id) {
+      await fetch(`${apiURL}/${id}`, {
+        method: 'DELETE'
+      });
+      loadBookings();
+    }
+
+    function editBooking(id, data) {
+      document.getElementById('booking_id').value = data.booking_id;
+      document.getElementById('guest_id').value = data.guest_id;
+      document.getElementById('room_id').value = data.room_id;
+      document.getElementById('employee_id').value = data.employee_id;
+      document.getElementById('check_in_date').value = data.check_in_date.split('T')[0];
+      document.getElementById('check_out_date').value = data.check_out_date.split('T')[0];
+      document.getElementById('booking_status').value = data.booking_status;
+
+      const form = document.getElementById('bookingForm');
+      form.onsubmit = async function(e) {
+        e.preventDefault();
+        const newData = ambilDataForm();
+        await fetch(`${apiURL}/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newData)
+        });
+        form.reset();
+        form.onsubmit = tambahBooking;
+        loadBookings();
+      };
+    }
+
+    function ambilDataForm() {
+      return {
+        booking_id: parseInt(document.getElementById('booking_id').value),
+        guest_id: parseInt(document.getElementById('guest_id').value),
+        room_id: parseInt(document.getElementById('room_id').value),
+        employee_id: parseInt(document.getElementById('employee_id').value),
+        check_in_date: document.getElementById('check_in_date').value,
+        check_out_date: document.getElementById('check_out_date').value,
+        booking_status: parseInt(document.getElementById('booking_status').value)
+      };
+    }
+
+    document.getElementById('bookingForm').onsubmit = tambahBooking;
+    loadBookings();
+  </script>
+</body>
+</html>

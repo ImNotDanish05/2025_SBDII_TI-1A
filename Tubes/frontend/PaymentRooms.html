@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Pembayaran Kamar</title>
+</head>
+<body>
+    <h1>Manajemen Pembayaran Kamar - ImNotDanish05</h1>
+
+    <form id="paymentRoomForm">
+        <input type="number" id="payment_id" placeholder="ID Pembayaran" required>
+        <input type="number" id="booking_id" placeholder="ID Booking" required>
+        <input type="number" id="payment_method_id" placeholder="ID Metode Pembayaran" required>
+        <input type="number" id="amount_paid" placeholder="Jumlah Dibayar" required>
+        <input type="date" id="payment_date" placeholder="Tanggal Pembayaran" required>
+        <input type="number" id="payment_status" placeholder="Status (0/1)" required>
+        <button type="submit">Tambah Pembayaran</button>
+    </form>
+
+    <ul id="paymentRoomList"></ul>
+
+    <script>
+        const apiURL = 'http://localhost:3000/api/paymentrooms';
+
+        async function loadPayments() {
+            const res = await fetch(apiURL);
+            const data = await res.json();
+            const list = document.getElementById('paymentRoomList');
+            list.innerHTML = '';
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ID:${item.payment_id} | Booking:${item.booking_id} | Metode:${item.payment_method_id} | Rp${item.amount_paid} | Tgl:${new Date(item.payment_date).toLocaleDateString()} | Status:${item.payment_status}
+                    <button onclick="hapusPayment('${item._id}')">Hapus</button>
+                    <button onclick='editPayment("${item._id}", ${item.payment_id}, ${item.booking_id}, ${item.payment_method_id}, ${item.amount_paid}, "${item.payment_date}", ${item.payment_status})'>Edit</button>
+                    <hr>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahPayment(e) {
+            e.preventDefault();
+            const payment = {
+                payment_id: parseInt(document.getElementById('payment_id').value),
+                booking_id: parseInt(document.getElementById('booking_id').value),
+                payment_method_id: parseInt(document.getElementById('payment_method_id').value),
+                amount_paid: parseFloat(document.getElementById('amount_paid').value),
+                payment_date: document.getElementById('payment_date').value,
+                payment_status: parseInt(document.getElementById('payment_status').value)
+            };
+
+            await fetch(apiURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payment)
+            });
+
+            document.getElementById('paymentRoomForm').reset();
+            loadPayments();
+        }
+
+        async function hapusPayment(id) {
+            await fetch(`${apiURL}/${id}`, {
+                method: 'DELETE'
+            });
+            loadPayments();
+        }
+
+        function editPayment(id, payment_id, booking_id, payment_method_id, amount_paid, payment_date, payment_status) {
+            document.getElementById('payment_id').value = payment_id;
+            document.getElementById('booking_id').value = booking_id;
+            document.getElementById('payment_method_id').value = payment_method_id;
+            document.getElementById('amount_paid').value = amount_paid;
+            document.getElementById('payment_date').value = payment_date.split('T')[0];
+            document.getElementById('payment_status').value = payment_status;
+
+            const form = document.getElementById('paymentRoomForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                const updated = {
+                    payment_id: parseInt(document.getElementById('payment_id').value),
+                    booking_id: parseInt(document.getElementById('booking_id').value),
+                    payment_method_id: parseInt(document.getElementById('payment_method_id').value),
+                    amount_paid: parseFloat(document.getElementById('amount_paid').value),
+                    payment_date: document.getElementById('payment_date').value,
+                    payment_status: parseInt(document.getElementById('payment_status').value)
+                };
+
+                await fetch(`${apiURL}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updated)
+                });
+
+                form.reset();
+                form.onsubmit = tambahPayment;
+                loadPayments();
+            };
+        }
+
+        document.getElementById('paymentRoomForm').onsubmit = tambahPayment;
+        loadPayments();
+    </script>
+</body>
+</html>

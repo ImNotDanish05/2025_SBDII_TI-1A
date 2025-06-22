@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Kamar Hotel</title>
+</head>
+<body>
+    <h1>Manajemen Data Kamar - DBSystemHotels</h1>
+    <form id="roomForm">
+        <input type="number" id="room_id" placeholder="ID Kamar" required>
+        <input type="text" id="room_type" placeholder="Tipe Kamar" required>
+        <input type="number" id="price" placeholder="Harga per Malam" required>
+        <input type="text" id="availability" placeholder="Ketersediaan (Available/Booked)" required>
+        <input type="number" id="bed_count" placeholder="Jumlah Tempat Tidur" required>
+        <input type="text" id="image" placeholder="URL Gambar">
+        <button type="submit">Tambah Kamar</button>
+    </form>
+
+    <ul id="roomList"></ul>
+
+    <script>
+        const apiURL = 'http://localhost:3000/api/rooms';
+
+        async function loadRooms() {
+            const res = await fetch(apiURL);
+            const data = await res.json();
+            const list = document.getElementById('roomList');
+            list.innerHTML = '';
+            data.forEach(room => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <strong>${room.room_type}</strong> - Rp${room.price} - ${room.availability} - ${room.bed_count} bed(s) - ${room.image}<br>
+                    <button onclick="hapusRoom('${room._id}')">Hapus</button>
+                    <button onclick='editRoom("${room._id}", "${room.room_id}", "${room.room_type}", "${room.price}", "${room.availability}", "${room.bed_count}", "${room.image}")'>Edit</button>
+                    <hr>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahRoom(e) {
+            e.preventDefault();
+            const room_id = document.getElementById('room_id').value;
+            const room_type = document.getElementById('room_type').value;
+            const price = document.getElementById('price').value;
+            const availability = document.getElementById('availability').value;
+            const bed_count = document.getElementById('bed_count').value;
+            const image = document.getElementById('image').value;
+
+            await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    room_id,
+                    room_type,
+                    price,
+                    availability,
+                    bed_count,
+                    image
+                })
+            });
+
+            document.getElementById('roomForm').reset();
+            loadRooms();
+        }
+
+        async function hapusRoom(id) {
+            await fetch(`${apiURL}/${id}`, {
+                method: 'DELETE'
+            });
+            loadRooms();
+        }
+
+        function editRoom(id, room_id, room_type, price, availability, bed_count, image) {
+            document.getElementById('room_id').value = room_id;
+            document.getElementById('room_type').value = room_type;
+            document.getElementById('price').value = price;
+            document.getElementById('availability').value = availability;
+            document.getElementById('bed_count').value = bed_count;
+            document.getElementById('image').value = image;
+
+            const form = document.getElementById('roomForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURL}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        room_id: document.getElementById('room_id').value,
+                        room_type: document.getElementById('room_type').value,
+                        price: document.getElementById('price').value,
+                        availability: document.getElementById('availability').value,
+                        bed_count: document.getElementById('bed_count').value,
+                        image: document.getElementById('image').value
+                    })
+                });
+
+                form.reset();
+                form.onsubmit = tambahRoom;
+                loadRooms();
+            };
+        }
+
+        document.getElementById('roomForm').onsubmit = tambahRoom;
+        loadRooms();
+    </script>
+</body>
+</html>

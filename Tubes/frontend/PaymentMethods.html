@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Metode Pembayaran</title>
+</head>
+<body>
+    <h1>Manajemen Metode Pembayaran - ImNotDanish05</h1>
+    <form id="paymentMethodForm">
+        <input type="number" id="payment_method_id" placeholder="ID Metode Pembayaran" required>
+        <input type="text" id="method_name" placeholder="Nama Metode Pembayaran" required>
+        <input type="text" id="description" placeholder="Deskripsi" required>
+        <button type="submit">Tambah Metode</button>
+    </form>
+
+    <ul id="paymentMethodList"></ul>
+
+    <script>
+        const apiURL = 'http://localhost:3000/api/paymentmethods';
+
+        async function loadPaymentMethods() {
+            const res = await fetch(apiURL);
+            const data = await res.json();
+            const list = document.getElementById('paymentMethodList');
+            list.innerHTML = '';
+            data.forEach(method => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${method.method_name} - ${method.description}
+                    <button onclick="hapusMethod('${method._id}')">Hapus</button>
+                    <button onclick='editMethod("${method._id}",
+                        "${method.payment_method_id}",
+                        "${method.method_name}",
+                        "${method.description}")'>Edit</button>
+                    <hr>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahMethod(e) {
+            e.preventDefault();
+            const payment_method_id = document.getElementById('payment_method_id').value;
+            const method_name = document.getElementById('method_name').value;
+            const description = document.getElementById('description').value;
+
+            await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    payment_method_id,
+                    method_name,
+                    description
+                })
+            });
+
+            document.getElementById('paymentMethodForm').reset();
+            loadPaymentMethods();
+        }
+
+        async function hapusMethod(id) {
+            await fetch(`${apiURL}/${id}`, {
+                method: 'DELETE'
+            });
+            loadPaymentMethods();
+        }
+
+        function editMethod(id, payment_method_id, method_name, description) {
+            document.getElementById('payment_method_id').value = payment_method_id;
+            document.getElementById('method_name').value = method_name;
+            document.getElementById('description').value = description;
+
+            const form = document.getElementById('paymentMethodForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURL}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        payment_method_id: document.getElementById('payment_method_id').value,
+                        method_name: document.getElementById('method_name').value,
+                        description: document.getElementById('description').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahMethod;
+                loadPaymentMethods();
+            };
+        }
+
+        document.getElementById('paymentMethodForm').onsubmit = tambahMethod;
+        loadPaymentMethods();
+    </script>
+</body>
+</html>

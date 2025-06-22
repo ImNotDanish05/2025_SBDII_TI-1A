@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Karyawan</title>
+</head>
+<body>
+    <h1>Manajemen Karyawan - ImNotDanish05</h1>
+    <form id="employeeForm">
+        <input type="number" id="employee_id" placeholder="Employee ID" required>
+        <input type="text" id="name" placeholder="Nama Karyawan" required>
+        <input type="text" id="position" placeholder="Posisi" required>
+        <input type="text" id="shift" placeholder="Shift" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone_number" placeholder="Nomor Telepon" required>
+        <input type="text" id="address" placeholder="Alamat" required>
+        <button type="submit">Tambah Karyawan</button>
+    </form>
+
+    <ul id="employeeList"></ul>
+
+    <script>
+        const apiURL = 'http://localhost:3000/api/employees';
+
+        async function loadEmployees() {
+            const res = await fetch(apiURL);
+            const data = await res.json();
+            const list = document.getElementById('employeeList');
+            list.innerHTML = '';
+            data.forEach(employee => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${employee.name} - ${employee.position} - ${employee.shift} - ${employee.email} - ${employee.phone_number} - ${employee.address}
+                    <button onclick="hapusEmployee('${employee._id}')">Hapus</button>
+                    <button onclick='editEmployee("${employee._id}", 
+                        "${employee.employee_id}", 
+                        "${employee.name}", 
+                        "${employee.position}", 
+                        "${employee.shift}", 
+                        "${employee.email}", 
+                        "${employee.phone_number}", 
+                        "${employee.address}")'>Edit</button>
+                    <hr>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        async function tambahEmployee(e){
+            e.preventDefault();
+            const employee_id = document.getElementById('employee_id').value;
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const shift = document.getElementById('shift').value;
+            const email = document.getElementById('email').value;
+            const phone_number = document.getElementById('phone_number').value;
+            const address = document.getElementById('address').value;
+
+            await fetch(apiURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    employee_id,
+                    name,
+                    position,
+                    shift,
+                    email,
+                    phone_number,
+                    address
+                })
+            });
+
+            document.getElementById('employeeForm').reset();
+            loadEmployees();
+        }
+
+        async function hapusEmployee(id) {
+            await fetch(`${apiURL}/${id}`, {
+                method: 'DELETE'
+            });
+            loadEmployees();
+        }
+
+        function editEmployee(id, employee_id, name, position, shift, email, phone_number, address) {
+            document.getElementById('employee_id').value = employee_id;
+            document.getElementById('name').value = name;
+            document.getElementById('position').value = position;
+            document.getElementById('shift').value = shift;
+            document.getElementById('email').value = email;
+            document.getElementById('phone_number').value = phone_number;
+            document.getElementById('address').value = address;
+
+            const form = document.getElementById('employeeForm');
+            form.onsubmit = async function(e) {
+                e.preventDefault();
+                await fetch(`${apiURL}/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        employee_id: document.getElementById('employee_id').value,
+                        name: document.getElementById('name').value,
+                        position: document.getElementById('position').value,
+                        shift: document.getElementById('shift').value,
+                        email: document.getElementById('email').value,
+                        phone_number: document.getElementById('phone_number').value,
+                        address: document.getElementById('address').value
+                    })
+                });
+                form.reset();
+                form.onsubmit = tambahEmployee;
+                loadEmployees();
+            };
+        }
+
+        document.getElementById('employeeForm').onsubmit = tambahEmployee;
+        loadEmployees();
+    </script>
+</body>
+</html>
