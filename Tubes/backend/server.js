@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
 
-const dotenv = require('dotenv');
+require('dotenv').config();
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -48,5 +49,5 @@ app.listen(PORT, () => {
   console.log(`→ http://localhost:${PORT}/api/Paymentrooms`);
   console.log(`→ http://localhost:${PORT}/api/Paymentmethods`);
   console.log(`→ http://localhost:${PORT}/api/Employees`);
-  console.log(`MongoDB URI: ${MONGO_URI}`);
+  // console.log(`MongoDB URI: ${MONGO_URI}`);
 });
