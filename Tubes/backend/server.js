@@ -3,13 +3,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const dotenv = require('dotenv');
 
+const dotenv = require('dotenv');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = 'mongodb+srv://danish05:NOFqNGdoaqpv611Z@sbdiitubes.64wndhe.mongodb.net/DBSystemHotels';
+const MONGO_URI = process.env.MONGO_URL;
 
 
 // Connect to MongoDB
