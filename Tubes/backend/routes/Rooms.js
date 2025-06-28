@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
             price,
             availability,
             bed_count,
-            image
+            images // ganti dari 'image' ke 'images'
         } = req.body;
 
         const room = new Rooms({
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
             price,
             availability,
             bed_count,
-            image
+            images
         });
 
         const savedRoom = await room.save();
@@ -49,7 +49,7 @@ router.put('/:id', async (req, res) => {
             price,
             availability,
             bed_count,
-            image
+            images // ganti dari 'image' ke 'images'
         } = req.body;
 
         const updatedRoom = await Rooms.findByIdAndUpdate(
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
                 price,
                 availability,
                 bed_count,
-                image
+                images
             },
             { new: true }
         );
