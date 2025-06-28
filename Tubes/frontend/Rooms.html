@@ -13,8 +13,8 @@
     <input type="number" id="price" placeholder="Harga per Malam" required>
     <input type="number" id="availability" placeholder="Ketersediaan (misal 1/2)" required>
     <input type="number" id="bed_count" placeholder="Jumlah Tempat Tidur" required>
-    <input type="text" id="image_type" placeholder="Tipe Gambar (interior/exterior)" required>
-    <input type="text" id="image_url" placeholder="URL Gambar" required>
+    <input type="text" id="image_interior" placeholder="URL Gambar Interior" required>
+    <input type="text" id="image_exterior" placeholder="URL Gambar Exterior" required>
     <button type="submit">Tambah Kamar</button>
   </form>
 
@@ -29,16 +29,13 @@
       const list = document.getElementById('roomList');
       list.innerHTML = '';
       data.forEach(room => {
-        let imagesHTML = '';
-        if (room.images && Array.isArray(room.images)) {
-          imagesHTML = room.images.map(img => `[${img.type}: ${img.url}]`).join(', ');
-        }
+        const imagesHTML = room.images?.map(img => `[${img.type}: ${img.url}]`).join(', ') || '';
         const li = document.createElement('li');
         li.innerHTML = `
           <strong>Room ID: ${room.room_id}</strong> - Type: ${room.room_type} - Rp${room.price} - Avail: ${room.availability} - Beds: ${room.bed_count}<br>
           Images: ${imagesHTML}<br>
           <button onclick="hapusRoom('${room._id}')">Hapus</button>
-          <button onclick='editRoom("${room._id}", "${room.room_id}", "${room.room_type}", "${room.price}", "${room.availability}", "${room.bed_count}", "${JSON.stringify(room.images).replace(/"/g, '&quot;')}")'>Edit</button>
+          <button onclick='editRoom("${room._id}", ${room.room_id}, ${room.room_type}, ${room.price}, ${room.availability}, ${room.bed_count}, ${JSON.stringify(room.images).replace(/"/g, '&quot;')})'>Edit</button>
           <hr>
         `;
         list.appendChild(li);
@@ -47,27 +44,22 @@
 
     async function tambahRoom(e) {
       e.preventDefault();
-      const room_id = document.getElementById('room_id').value;
-      const room_type = document.getElementById('room_type').value;
-      const price = document.getElementById('price').value;
-      const availability = document.getElementById('availability').value;
-      const bed_count = document.getElementById('bed_count').value;
-      const image_type = document.getElementById('image_type').value;
-      const image_url = document.getElementById('image_url').value;
+      const newRoom = {
+        room_id: parseInt(document.getElementById('room_id').value),
+        room_type: parseInt(document.getElementById('room_type').value),
+        price: parseFloat(document.getElementById('price').value),
+        availability: parseInt(document.getElementById('availability').value),
+        bed_count: parseInt(document.getElementById('bed_count').value),
+        images: [
+          { type: 'interior', url: document.getElementById('image_interior').value },
+          { type: 'exterior', url: document.getElementById('image_exterior').value }
+        ]
+      };
 
       await fetch(apiURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          room_id,
-          room_type,
-          price,
-          availability,
-          bed_count,
-          images: [
-            { type: image_type, url: image_url }
-          ]
-        })
+        body: JSON.stringify(newRoom)
       });
 
       document.getElementById('roomForm').reset();
@@ -79,39 +71,40 @@
       loadRooms();
     }
 
-    function editRoom(id, room_id, room_type, price, availability, bed_count, imagesJSON) {
-      const images = JSON.parse(imagesJSON);
+    function editRoom(id, room_id, room_type, price, availability, bed_count, images) {
       document.getElementById('room_id').value = room_id;
       document.getElementById('room_type').value = room_type;
       document.getElementById('price').value = price;
       document.getElementById('availability').value = availability;
       document.getElementById('bed_count').value = bed_count;
-      if (images && images.length > 0) {
-        document.getElementById('image_type').value = images[0].type;
-        document.getElementById('image_url').value = images[0].url;
+
+      const parsedImages = images;
+      if (parsedImages && parsedImages.length === 2) {
+        const interior = parsedImages.find(img => img.type === 'interior');
+        const exterior = parsedImages.find(img => img.type === 'exterior');
+        document.getElementById('image_interior').value = interior ? interior.url : '';
+        document.getElementById('image_exterior').value = exterior ? exterior.url : '';
       }
 
       const form = document.getElementById('roomForm');
       form.onsubmit = async function(e) {
         e.preventDefault();
-        const updatedImages = [
-          {
-            type: document.getElementById('image_type').value,
-            url: document.getElementById('image_url').value
-          }
-        ];
+        const updatedRoom = {
+          room_id: parseInt(document.getElementById('room_id').value),
+          room_type: parseInt(document.getElementById('room_type').value),
+          price: parseFloat(document.getElementById('price').value),
+          availability: parseInt(document.getElementById('availability').value),
+          bed_count: parseInt(document.getElementById('bed_count').value),
+          images: [
+            { type: 'interior', url: document.getElementById('image_interior').value },
+            { type: 'exterior', url: document.getElementById('image_exterior').value }
+          ]
+        };
 
         await fetch(`${apiURL}/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            room_id: document.getElementById('room_id').value,
-            room_type: document.getElementById('room_type').value,
-            price: document.getElementById('price').value,
-            availability: document.getElementById('availability').value,
-            bed_count: document.getElementById('bed_count').value,
-            images: updatedImages
-          })
+          body: JSON.stringify(updatedRoom)
         });
 
         form.reset();
